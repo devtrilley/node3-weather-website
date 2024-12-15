@@ -4,7 +4,8 @@ body {
   max-width: 650px;
   margin: 0 auto;
   padding: 0 16px;
-
+  /* Background to add nice gradient I found */
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fbc2eb);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -28,9 +29,15 @@ h1 {
 }
 
 header a {
-  color: #888888;
-  margin-right: 16px;
+  color: #fff;
+  margin-right: 2rem;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+header a:hover {
+  text-decoration: underline;
 }
 
 .portrait {
@@ -47,6 +54,17 @@ select {
   border: 1px solid #cccccc;
   padding: 12px;
   border-radius: 4px;
+  transition: opacity 0.3s;
+}
+
+input:hover,
+select:hover {
+  opacity: 0.75;
+}
+
+input:active,
+select:active {
+  opacity: 0.5;
 }
 
 button {
@@ -56,4 +74,13 @@ button {
   color: white;
   padding: 12px;
   border-radius: 4px;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.75;
+}
+
+button:active {
+  opacity: 0.5;
 }
