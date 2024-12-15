@@ -45,18 +45,23 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  if (!req.query.address) {
+  // Initilaizing address and unit vars for cleaner code
+  const address = req.query.address; // We don't want a default because we have the error message
+  const unit = req.query.unit || 'm'; // By default we want the metric system to be our unit of choice (C)
+
+
+  if (!address) {
     return res.send({
       error: "You must prove an address!",
     });
   }
 
-  geocode(req.query.address, (error, { latitude, longitude, location } = { }) => {
+  geocode(address, (error, { latitude, longitude, location } = { }) => {
     if (error) {
       return res.send({ error });
     }
 
-    forecast(latitude, longitude, (error, forecastData) => {
+    forecast(latitude, longitude, unit, (error, forecastData) => {
       if (error) {
         return res.send({ error });
       }
@@ -64,7 +69,7 @@ app.get("/weather", (req, res) => {
       res.send({
         forecast: forecastData,
         location,
-        address: req.query.address,
+        address: address,
       });
     });
   });

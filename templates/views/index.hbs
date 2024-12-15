@@ -11,6 +11,14 @@
 
       <form>
         <input placeholder="Location">
+        {{!-- Here is where I add the drop down so we can choose a temperature measurement --}}
+        <select id="unit">
+          {{!-- m, f, s were all seen in the api's documentation. metric, fahrenheit, and scientific respectively --}}
+          {{!-- values are set so we know what each option represents in our data when we submit the form --}}
+          <option value="m">Celsius (°C)</option> 
+          <option value="f">Fahrenheit (°F)</option>
+          <option value="s">Kelvin (K)</option>
+        </select>
         <button>Search</button>
       </form>
 
